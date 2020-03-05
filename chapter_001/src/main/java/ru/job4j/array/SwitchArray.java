@@ -1,6 +1,17 @@
 package ru.job4j.array;
 
 public class SwitchArray {
+    //source указывает индекс элемента, который нужно заменить на элемент из dest.
+    //
+    //То есть значение ячеек source и dest нужно поменять местами.
+
+    public static int[] swap(int[] array, int source, int dest) {
+        int temp = array[source];
+        array[source] = array[dest];
+        array[dest] = temp;
+        return array;
+    }
+
     public static int[] swapBorder(int[] array) {
         int temp = array[0];
         array[0] = array[array.length - 1];
