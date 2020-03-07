@@ -6,6 +6,7 @@ public class Check {
         for (int i = 0; i < data.length; i++) {
             if(data[i] != true){
                 result = false;
+                break;
             }
         }
         return result;
