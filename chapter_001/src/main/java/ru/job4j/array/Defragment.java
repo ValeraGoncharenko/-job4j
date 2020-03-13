@@ -8,8 +8,8 @@ public class Defragment {
 
     public static String[] compress(String[] array) {
 
-        for (int i = 0; i < array.length-1; i++) {
-            for (int j = 0; j < array.length-1; j++) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - 1; j++) {
                 if (array[j] == null) {
                     array[j] = array[j + 1];
                     array[j + 1] = null;
@@ -24,7 +24,7 @@ public class Defragment {
         return array;
     }
 
-        public static void main (String[]args){
+        public static void main(String[]args) {
             String[] input = {"I", null, "wanna", null, "be", null, "compressed"};
             String[] compressed = compress(input);
             System.out.println();

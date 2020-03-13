@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SqAreaTest {
 
     @Test
-    public void squareTest(){
+    public void squareTest() {
         int inP = 4;
         int inK = 1;
         double expected = 1;
