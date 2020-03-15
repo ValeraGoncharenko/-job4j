@@ -1,26 +1,19 @@
 package ru.job4j.array;
 
-
 public class Defragment {
-//    Для выполнения этой задачи нужно использовать: цикл for с индексом,
-//    цикл while для поиска заполненной ячейки,
-//    оператор условия if.
-
     public static String[] compress(String[] array) {
-
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j < array.length - 1; j++) {
-                if (array[j] == null) {
-                    array[j] = array[j + 1];
-                    array[j + 1] = null;
+        for (int index = 0; index < array.length - 1; index++) {
+            int count = 0;
+            while (count < array.length) {
+                if (array[count] == null) {
+                    array[count] = array[index + 1];
+                    array[index + 1] = null;
                 }
+                count++;
             }
 
-
-               // System.out.print(array[index] + " ");
-            }
-
-
+            // System.out.print(array[index] + " ");
+        }
         return array;
     }
 
