@@ -6,16 +6,13 @@ public class AlgoArray {
         int temp = array[0];
         array[0] = array[3];
         array[3] = temp;
-
-        int temp1 = array[1];
-        array[1] = array[2];
-        array[2] = temp1;
-
-        int temp2 = array[3];
-        array[3] = array[4];
-        array[4] = temp2;
-
-        for (int index = 0; index < array.length; index++) {
+            int temp1 = array[1];
+            array[1] = array[2];
+            array[2] = temp1;
+                int temp2 = array[3];
+                array[3] = array[4];
+                array[4] = temp2;
+                for (int index = 0; index < array.length; index++) {
             System.out.println(array[index]);
         }
     }
