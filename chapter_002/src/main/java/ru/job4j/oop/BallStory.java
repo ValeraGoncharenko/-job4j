@@ -8,11 +8,11 @@ public class BallStory {
         Fox fox = new Fox();
 
         hare.tryEat(ball);
-        ball.tryEat(hare);
+        ball.tryEat(ball);
         wolf.tryEat(ball);
-        ball.tryEat(wolf);
+        ball.tryEat(ball);
         fox.tryEat(ball);
-        ball.tryEat(fox);
+        ball.tryEat(ball);
         fox.eat(ball);
     }
 }
