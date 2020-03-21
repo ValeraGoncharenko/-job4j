@@ -7,12 +7,10 @@ import org.junit.Test;
 public class PointTest {
     @Test
     public void distanceTest() {
-        int inX1 = 0;
-        int inY1 = 0;
-        int inX2 = 2;
-        int inY2 = 0;
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 2);
         double expected = 2;
-        double out = Point.distance(inX1, inY1, inX2, inY2);
+        double out = a.distance(b);
         Assert.assertEquals(expected, out, 0.01);
     }
 }
