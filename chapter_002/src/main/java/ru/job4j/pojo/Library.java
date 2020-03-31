@@ -19,13 +19,11 @@ public class Library {
         }
 
         System.out.println("Переставьте книгу с индексом 0 и 3 и выведете на консоль");
+        Book temp;
+        temp = books[0];
+        books[0] = books[3];
+        books[3] = temp;
         for (int i = 0; i < books.length; i++) {
-            Book temp;
-            if (i == 0){
-                temp = books[i];
-                books[i] = books[3];
-                books[3] = temp;
-            }
             Book bk = books[i];
             System.out.println(bk.getName() + " - " + bk.getCount());
         }
