@@ -119,13 +119,12 @@ public class Tracker {
         boolean result = false;
         int index = indexOf(id);
         if (index != -1) {
-            for (int i = 0; i < this.position; i++) {
-                System.arraycopy(this.items, i + 1, this.items, i, items.length - position);
+                System.arraycopy(this.items, index + 1, this.items, index, items.length - position);
                 items[position - 1] = null;
                 this.position--;
                 result = true;
             }
-        }
+
         return result;
     }
 }
