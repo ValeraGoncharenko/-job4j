@@ -41,11 +41,4 @@ public class Product {
         return Objects.hash(name, count);
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", count=" + count +
-                '}';
-    }
 }

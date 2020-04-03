@@ -11,11 +11,9 @@ public class Shop {
      */
     public Product[] delete(Product[] products, int index) {
         for (int i = index; i < products.length - 1; i++) {
-            if(products != null) {
-                products[i] = products[i + 1];
-                products[products.length - 1] = null;
-            }
+            products[i] = products[i + 1];
         }
+        products[products.length - 1] = null;
         return products;
     }
     public static void main(String[] args) {
@@ -29,8 +27,12 @@ public class Shop {
         Shop shop = new Shop();
         shop.delete(products, 1);
 
-        for (int i = 0; i < products.length; i++) {
-            System.out.println(products[i]);
+        for (Product product: products) {
+            if (product != null) {
+                System.out.println(product.getName() + ", count: " + product.getCount());
+            } else {
+                System.out.println("null");
+            }
         }
 
 
