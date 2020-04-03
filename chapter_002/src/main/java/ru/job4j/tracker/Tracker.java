@@ -67,14 +67,15 @@ public class Tracker {
      * @return заявка.
      */
     public Item findById(String id) {
-        Item result = null;
+        Item item = null;
         for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getId().equals(id)) {
-                result =  this.items[i];
+            Item current = items[i];
+            if (current.getId().equals(id)) {
+                item = current;
                 break;
             }
         }
-        return result;
+        return item;
     }
 
     /**
