@@ -52,8 +52,8 @@ public class Tracker {
     public Item[] findByName(String key){
         int size = 0;
         Item[] result = new Item[position];
-        for (int i = 0; i < this.items.length; i++) {
-            if(this.items[i] != null && this.items[i].getName().equals(key)){
+        for (int i = 0; i < this.position; i++) {
+            if(this.items[i].getName().equals(key)){
                 result[size] = this.items[i];
                 size++;
             }
@@ -68,10 +68,61 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item item : this.items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (int i = 0; i < this.position; i++) {
+            if (this.items[i].getId().equals(id)) {
+                result =  this.items[i];
                 break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Метод возвращает index по id.
+     *
+     * @return заявка.
+     */
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (this.items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /**
+     * Метод замены заявки.
+     * Заменяет заявку по id.
+     * @return заявка.
+     */
+    public boolean replace(String id, Item item) {
+        boolean result = false;
+        int index = indexOf(id);
+        if(index != -1){
+            item.setId(id);
+            this.items[index] = item;
+            result = true;
+        }
+        return result;
+    }
+
+    /**
+     * Метод удаления заявки.
+     * Удаляет заявку по id.
+     * @return boolean.
+     */
+    public boolean delete(String id) {
+        boolean result = false;
+        int index = indexOf(id);
+        if (index != -1) {
+            for (int i = 0; i < this.position; i++) {
+                System.arraycopy(this.items, i + 1, this.items, i, items.length - position);
+                items[position - 1] = null;
+                this.position--;
+                result = true;
             }
         }
         return result;
