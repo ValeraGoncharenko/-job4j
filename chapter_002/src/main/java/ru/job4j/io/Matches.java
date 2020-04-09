@@ -11,18 +11,21 @@ public class Matches {
         boolean run = true;
         while (run) {
             System.out.println("Количество спичек на столе: " + matches);
-            System.out.print("Выберите количество спичек от 1 до 3: \n");
+            System.out.print("Выберите количество спичек от 1 до 3: ");
             int select = Integer.valueOf(input.nextLine());
             if(select < 4){
                 if(matches <= 0) {
                     if (player % 2 == 0) {
                         System.out.println("Победил игрок № 2");
                     }
+                    else
+                        System.out.println("Победил игрок № 1");
                     run = false;
                     }
             }
             matches -= select;
             player++;
+            System.out.println(player);
             }
     }
 }
