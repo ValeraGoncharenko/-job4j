@@ -38,7 +38,7 @@ public class Tracker {
      * Метод  возвращает копию массива this.items.
      * return возвращает копию массива this.items без null элементов.
      */
-    public Item[] findAll(){
+    public Item[] findAll() {
         return  Arrays.copyOf(this.items, this.position);
     }
 
@@ -49,11 +49,11 @@ public class Tracker {
      * @return result.
      */
 
-    public Item[] findByName(String key){
+    public Item[] findByName(String key) {
         int size = 0;
         Item[] result = new Item[position];
         for (int i = 0; i < this.position; i++) {
-            if(this.items[i].getName().equals(key)){
+            if (this.items[i].getName().equals(key)) {
                 result[size] = this.items[i];
                 size++;
             }
@@ -102,7 +102,7 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean result = false;
         int index = indexOf(id);
-        if(index != -1){
+        if (index != -1) {
             item.setId(id);
             this.items[index] = item;
             result = true;

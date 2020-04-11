@@ -44,7 +44,7 @@ public class StartUI {
         System.out.println("=== Find Item by Id ====");
         String id = input.askStr("Enter id item for find");
         Item result = tracker.findById(id);
-        if(result != null){
+        if (result != null) {
             System.out.println(result);
         } else {
             System.out.println("Item not found");
@@ -67,23 +67,17 @@ public class StartUI {
             int select = input.askInt("Select: ");
             if (select == 0) {
                 StartUI.createItem(input, tracker);
-            }
-            else if (select == 1) {
+            } else if (select == 1) {
                 showItems(tracker);
-            }
-            else if (select == 2) {
+            } else if (select == 2) {
                 editItem(input, tracker);
-            }
-            else if (select == 3) {
+            } else if (select == 3) {
                 deleteItem(input, tracker);
-            }
-            else if (select == 4) {
+            } else if (select == 4) {
                 findItemById(input, tracker);
-            }
-            else if (select == 5) {
+            } else if (select == 5) {
                 findItemByName(input, tracker);
-            }
-            else if (select == 6) {
+            } else if (select == 6) {
                 run = false;
             }
         }

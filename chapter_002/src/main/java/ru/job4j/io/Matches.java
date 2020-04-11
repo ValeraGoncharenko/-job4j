@@ -13,15 +13,15 @@ public class Matches {
             System.out.println("Количество спичек на столе: " + matches);
             System.out.print("Выберите количество спичек от 1 до 3: ");
             int select = Integer.valueOf(input.nextLine());
-            if(select < 4){
-                if(matches <= 0) {
+            if (select < 4) {
+                if (matches <= 0) {
                     if (player % 2 == 0) {
                         System.out.println("Победил игрок № 2");
-                    }
-                    else
+                    } else {
                         System.out.println("Победил игрок № 1");
-                    run = false;
+                        run = false;
                     }
+                }
             }
             matches -= select;
             player++;

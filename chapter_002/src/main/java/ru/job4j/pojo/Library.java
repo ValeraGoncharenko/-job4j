@@ -7,7 +7,7 @@ public class Library {
         Book fantasy = new Book("Roadside Picnic", 400);
         Book training = new Book("Clean code", 200);
 
-        Book [] books = new Book[4];
+        Book[] books = new Book[4];
         books[0] = adventures;
         books[1] = detectives;
         books[2] = fantasy;
@@ -31,8 +31,8 @@ public class Library {
         System.out.println("Добавьте цикл с выводом книг с именем \"Clean code\"");
         for (int i = 0; i < books.length; i++) {
             Book bk = books[i];
-            if (bk.getName().equals("Clean code")){
-                System.out.println(bk.getName()+ " - " + bk.getCount());
+            if (bk.getName().equals("Clean code")) {
+                System.out.println(bk.getName() + " - " + bk.getCount());
             }
         }
 

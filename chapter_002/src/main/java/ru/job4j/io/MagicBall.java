@@ -5,16 +5,17 @@ import java.util.Scanner;
 
 public class MagicBall {
 
-    public void responseUser(String questions){
+    public void responseUser(String questions) {
         int answer = new Random().nextInt(3);
         int length = questions.length();
-        if(length > 2) {
+        if (length > 2) {
             if (answer == 0) {
                 System.out.println("Да ");
             } else if (answer == 1) {
                 System.out.println("Нет ");
-            } else
+            } else {
                 System.out.println("Может быть ...");
+            }
         }
     }
     public static void main(String[] args) {

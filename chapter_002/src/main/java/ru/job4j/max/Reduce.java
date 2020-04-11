@@ -15,12 +15,12 @@ public class Reduce {
      * @version $Id$.
      * @since 22.03.2020.
      */
-    public void to(int[] array) {//Метод не видит переменную обьекта и компилятор использует локальную переменную, испровляем при помощи this
+    public void to(int[] array) { //Метод не видит переменную обьекта и компилятор использует локальную переменную, испровляем при помощи this
         this.array = array;
     }
 
     public void print() {
-        for (int index = 0; index < array.length; index++) {//Происходит передача в цикл null массива
+        for (int index = 0; index < array.length; index++) { //Происходит передача в цикл null массива
             System.out.println(array[index]);
         }
     }
