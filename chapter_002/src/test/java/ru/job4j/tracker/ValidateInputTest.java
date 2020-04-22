@@ -13,8 +13,9 @@ public class ValidateInputTest {
         ByteArrayOutputStream mem = new ByteArrayOutputStream();
         PrintStream out = System.out;
         System.setOut(new PrintStream(mem));
-        String[] data = {"one", "1"};
-        ValidateInput input = new ValidateStubInput(data);
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"one", "1"})
+        );
         input.askInt("Enter");
         assertThat(
                 mem.toString(),
@@ -24,13 +25,14 @@ public class ValidateInputTest {
     }
 
     @Test
-    public void whenMaxNumberInput() {
+    public void whenMaxInput() {
         ByteArrayOutputStream mem = new ByteArrayOutputStream();
         PrintStream out = System.out;
         System.setOut(new PrintStream(mem));
-        String[] data = {"6", "4"};
-        ValidateInput input = new ValidateStubInput(data);
-        input.askInt("Enter", 5);
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"6", "4"})
+        );
+        input.askInt( "Enter", 5);
         assertThat(
                 mem.toString(),
                 is(String.format("Please select key from menu.%n"))
