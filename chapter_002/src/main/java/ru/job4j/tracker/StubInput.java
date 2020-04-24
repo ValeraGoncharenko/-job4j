@@ -8,10 +8,6 @@ public class StubInput implements Input {
         this.answers = answers;
     }
 
-    public StubInput() {
-
-    }
-
     @Override
     public String askStr(String question) {
         return answers[position++];
@@ -25,11 +21,10 @@ public class StubInput implements Input {
     @Override
     public int askInt(String question, int max) {
         int select = askInt(question);
-        if (select >= 0 && select < max) {
-            return select;
-        } else {
+        if (select < 0 || select >= max) {
             throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
         }
+        return select;
     }
 
 
