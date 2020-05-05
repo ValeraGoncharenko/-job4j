@@ -22,7 +22,9 @@ public class PaintTest {
         //Заменяем стандартный вывод на вывод в пямять для тестирования.
         System.setOut(new PrintStream(out));
         // выполняем действия пишушиее в консоль.
-        new Paint().draw(new Square());
+        Paint paint = new Paint();
+        paint.setShape(new Square());
+        paint.draw();
         // проверяем результат вычисления
         assertThat(
                 new String(out.toByteArray()),
