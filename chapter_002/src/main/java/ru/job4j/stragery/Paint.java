@@ -8,16 +8,16 @@ public class Paint {
         this.shape = shape;
     }
 
-    public void draw() {
+    public void drawExecute() {
         System.out.println(shape.draw());
     }
 
     public static void main(String[] args) {
         Paint paint = new Paint();
         paint.setShape(new Square());
-        paint.draw();
+        paint.drawExecute();
         System.out.println();
         paint.setShape(new Triangle());
-        paint.draw();
+        paint.drawExecute();
     }
 }

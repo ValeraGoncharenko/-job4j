@@ -24,7 +24,7 @@ public class PaintTest {
         // выполняем действия пишушиее в консоль.
         Paint paint = new Paint();
         paint.setShape(new Square());
-        paint.draw();
+        paint.drawExecute();
         // проверяем результат вычисления
         assertThat(
                 new String(out.toByteArray()),
