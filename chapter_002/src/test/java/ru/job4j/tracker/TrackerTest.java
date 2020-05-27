@@ -1,5 +1,9 @@
 package ru.job4j.tracker;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -28,8 +32,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(next);
         // Удаляем null
-        Item[] ex = tracker.findAll();
-        Item[] res = new Item[]{item, next};
+      List <Item> ex = tracker.findAll();
+      List  <Item> res = Arrays.asList(new Item[]{item, next});
         //Проверяем наличие null после копирования
         assertThat(ex, is(res));
     }
@@ -48,8 +52,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(next);
 
-        Item[] ex = tracker.findByName("test1");
-        Item[] res = new Item[]{item};
+        List <Item> ex = tracker.findByName("test1");
+       List <Item> res = Arrays.asList(new Item[]{item});
         assertThat(ex, is(res));
     }
 
