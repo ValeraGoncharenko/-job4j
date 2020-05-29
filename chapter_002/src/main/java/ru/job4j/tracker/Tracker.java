@@ -84,6 +84,7 @@ public class Tracker {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getId().equals(id)) {
                 value = i;
+                break;
             }
         }
         return value;
