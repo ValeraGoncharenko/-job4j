@@ -18,7 +18,7 @@ public class BankService {
      */
     public void addUser(User user) {
         if (!users.containsKey(user)) {
-            users.put(user, new ArrayList<Account>());
+            users.putIfAbsent(user, new ArrayList<Account>());
         }
     }
 
@@ -81,6 +81,7 @@ public class BankService {
      * @param srcRequisite - реквизиты переводящего пользователя.
      * @param destPassport - пасспорт принимающего пользователя.
      * @param destRequisite - реквизиты принимающего пользователя.
+     * @param amount - сумма.
      * @return - boolean.
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
@@ -88,7 +89,7 @@ public class BankService {
         boolean rsl = false;
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount != null && srcAccount.getBalance() > 0) {
+        if (srcAccount != null && srcAccount.getBalance() > 0 && destAccount != null) {
             destAccount.setBalance(destAccount.getBalance() + amount);
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             rsl = true;
