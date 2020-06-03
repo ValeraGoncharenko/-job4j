@@ -17,9 +17,7 @@ public class BankService {
      * @param user пользователь
      */
     public void addUser(User user) {
-        if (!users.containsKey(user)) {
-            users.putIfAbsent(user, new ArrayList<Account>());
-        }
+        users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     /**
@@ -30,7 +28,6 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         List<Account> presentAccount;
-
         if (user != null) {
             presentAccount = users.get(user);
             if (!presentAccount.contains(account)) {
