@@ -1,10 +1,11 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
+env:
+  global:
+    - CODECOV_TOKEN="4b630805-08db-4cfc-8e93-aceef5825ee1"
 language: java
 jdk:
   - openjdk14
-  env:
-    global:
-      - CODECOV_TOKEN="4b630805-08db-4cfc-8e93-aceef5825ee1"
+
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
