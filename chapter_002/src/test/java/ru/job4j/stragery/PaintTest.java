@@ -29,7 +29,7 @@ public class PaintTest {
         assertThat(
                 new String(out.toByteArray()),
                 is(
-                        new StringJoiner( System.lineSeparator(), "",
+                        new StringJoiner(System.lineSeparator(), "",
                                 System.lineSeparator())
                                 .add("++++")
                                 .add("+  +")

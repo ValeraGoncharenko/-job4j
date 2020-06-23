@@ -13,7 +13,7 @@ public class Machine {
     /**
      * Массив для хранения монет.
      */
-    private final int[] COINS = {10, 5, 2, 1};
+    private final int[] coins = {10, 5, 2, 1};
 
     /**
      * Метод добавления заявки в хранилище
@@ -26,10 +26,10 @@ public class Machine {
         int size = 0;
         int balance = money - price;
 
-        for (int i = 0; i < COINS.length; i++) {
-            while (balance >= COINS[i]) {
-                balance = balance - COINS[i];
-                rsl[size] = COINS[i];
+        for (int i = 0; i < coins.length; i++) {
+            while (balance >= coins[i]) {
+                balance = balance - coins[i];
+                rsl[size] = coins[i];
                 size++;
             }
 

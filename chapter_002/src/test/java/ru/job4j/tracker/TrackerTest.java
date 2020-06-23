@@ -32,8 +32,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(next);
         // Удаляем null
-      List <Item> ex = tracker.findAll();
-      List  <Item> res = Arrays.asList(new Item[]{item, next});
+      List<Item> ex = tracker.findAll();
+      List<Item> res = Arrays.asList(new Item[]{item, next});
         //Проверяем наличие null после копирования
         assertThat(ex, is(res));
     }
@@ -52,8 +52,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(next);
 
-        List <Item> ex = tracker.findByName("test1");
-       List <Item> res = Arrays.asList(new Item[]{item});
+        List<Item> ex = tracker.findByName("test1");
+       List<Item> res = Arrays.asList(new Item[]{item});
         assertThat(ex, is(res));
     }
 
