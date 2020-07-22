@@ -6,7 +6,7 @@ public class Departments {
 
     public static List<String> fillGaps(List<String> deps) {
 
-        HashSet<String> tmp = new HashSet<>();
+        TreeSet<String> tmp = new TreeSet<>();
 
         for (String value : deps) {
             String start = "";
@@ -16,7 +16,6 @@ public class Departments {
             }
         }
         List<String> rsl = new ArrayList<>(tmp);
-        sortAsc(rsl);
         return rsl;
     }
 

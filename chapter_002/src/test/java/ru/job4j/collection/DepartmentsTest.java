@@ -2,8 +2,10 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-import static org.hamcrest.Matchers.is;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class DepartmentsTest {
@@ -50,4 +52,16 @@ public class DepartmentsTest {
         Departments.sortDesc(deps);
         assertThat(deps, is(expected));
     }
+
+    @Test
+    public void whenDepartmentsSortDescEqual() {
+        DepDescComp compare = new DepDescComp();
+        int rst = compare.compare(
+                "K1",
+                "K1"
+        );
+        assertThat(rst, equalTo(0));
+    }
+
+
 }
