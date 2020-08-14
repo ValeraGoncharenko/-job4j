@@ -15,8 +15,8 @@ public class SchoolTest {
     @Test
     public void collect10A(){
         School school = new School();
-        List<Student> student = Collections.singletonList(new Student("Honcharenko", 80));
-        Predicate<Student> predicate = s -> s.getScore() > 70;
+        List<Student> student = Collections.singletonList(new Student("Honcharenko", 70));
+        Predicate<Student> predicate = s -> s.getScore() >= 70;
         school.collect(student, predicate);
         assertThat(student.get(0).getSurname(), is("Honcharenko"));
     }
@@ -25,7 +25,7 @@ public class SchoolTest {
     public void collect10B(){
         School school = new School();
         List<Student> student = Collections.singletonList(new Student("Honchar", 60));
-        Predicate<Student> predicate = s -> s.getScore() > 50 & s.getScore() < 70;
+        Predicate<Student> predicate = s -> s.getScore() > 50 && s.getScore() < 70;
         school.collect(student, predicate);
         assertThat(student.get(0).getSurname(), is("Honchar"));
     }
@@ -33,8 +33,8 @@ public class SchoolTest {
     @Test
     public void collect10V(){
         School school = new School();
-        List<Student> student = Collections.singletonList(new Student("Ho", 40));
-        Predicate<Student> predicate = s -> s.getScore() < 50;
+        List<Student> student = Collections.singletonList(new Student("Ho", 50));
+        Predicate<Student> predicate = s -> s.getScore() <= 50;
         school.collect(student, predicate);
         assertThat(student.get(0).getSurname(), is("Ho"));
     }
