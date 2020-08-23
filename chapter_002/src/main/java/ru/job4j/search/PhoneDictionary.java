@@ -28,14 +28,14 @@ public class PhoneDictionary {
 //    }
 
     public ArrayList<Person> find(String key) {
-        ArrayList<Person> result = new ArrayList<>();
+        var result = new ArrayList<Person>();
         Predicate<Person> name = n -> n.getName().contains(key);
         Predicate<Person> surname = n -> n.getSurname().contains(key);
         Predicate<Person> phone = n -> n.getPhone().contains(key);
         Predicate<Person> address = n -> n.getAddress().contains(key);
-        Predicate<Person> combine = name.or(surname).or(phone).or(address);
+        var combine = name.or(surname).or(phone).or(address);
 
-        for (Person person : persons) {
+        for (var person : persons) {
             if (combine.test(person)) {
                 result.add(person);
             }
