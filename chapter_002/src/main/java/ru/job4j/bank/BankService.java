@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
 
@@ -26,15 +23,24 @@ public class BankService {
      * @param account - аккаунт пользователя.
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
+//        User user = findByPassport(passport);
+//        List<Account> presentAccount;
+//        if (user != null) {
+//            presentAccount = users.get(user);
+//            if (!presentAccount.contains(account)) {
+//                presentAccount.add(account);
+//            }
+//
+//
+        var user = Optional.ofNullable(findByPassport(passport));
         List<Account> presentAccount;
-        if (user != null) {
-            presentAccount = users.get(user);
+        if(user.isPresent()){
+            presentAccount = users.get(user.get());
             if (!presentAccount.contains(account)) {
                 presentAccount.add(account);
             }
-
         }
+
 
     }
 
@@ -73,11 +79,11 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-        Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount != null && srcAccount.getBalance() > 0 && destAccount != null) {
-            destAccount.setBalance(destAccount.getBalance() + amount);
-            srcAccount.setBalance(srcAccount.getBalance() - amount);
+        var srcAccount = Optional.ofNullable(findByRequisite(srcPassport, srcRequisite));
+        var destAccount = Optional.ofNullable(findByRequisite(destPassport, destRequisite));
+        if (srcAccount.isPresent() && srcAccount.get().getBalance() > 0 && destAccount.isPresent()) {
+            destAccount.get().setBalance(destAccount.get().getBalance() + amount);
+            srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
             rsl = true;
         }
 
