@@ -32,7 +32,7 @@ public class BankService {
 //            }
 //
 //
-        var user = Optional.ofNullable(findByPassport(passport));
+        var user = findByPassport(passport);
         List<Account> presentAccount;
         if(user.isPresent()){
             presentAccount = users.get(user.get());
@@ -40,8 +40,6 @@ public class BankService {
                 presentAccount.add(account);
             }
         }
-
-
     }
 
     /**
@@ -49,8 +47,8 @@ public class BankService {
      * @param passport - пасспорт пользователя.
      * @return - пользователя.
      */
-    public User findByPassport(String passport) {
-        return users.keySet().stream().filter(u -> u.getPassport().equals(passport)).findFirst().orElse(null);
+    public Optional<User> findByPassport(String passport) {
+        return users.keySet().stream().filter(u -> u.getPassport().equals(passport)).findFirst();
     }
 
     /**
@@ -59,12 +57,13 @@ public class BankService {
      * @param requisite - реквизиты пользователя.
      * @return - счет.
      */
-    public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user == null) {
-            return null;
-        }
-        return users.get(user).stream().filter(a -> a.getRequisite().equals(requisite)).findFirst().orElse(null);
+    public Optional<Account> findByRequisite(String passport, String requisite) {
+        var user = findByPassport(passport);
+        return user.flatMap(value -> users.get(value)
+                .stream()
+                .filter(e -> e.getRequisite()
+                        .equals(requisite))
+                .findFirst());
     }
 
     /**
@@ -79,8 +78,8 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        var srcAccount = Optional.ofNullable(findByRequisite(srcPassport, srcRequisite));
-        var destAccount = Optional.ofNullable(findByRequisite(destPassport, destRequisite));
+        var srcAccount = findByRequisite(srcPassport, srcRequisite);
+        var destAccount = findByRequisite(destPassport, destRequisite);
         if (srcAccount.isPresent() && srcAccount.get().getBalance() > 0 && destAccount.isPresent()) {
             destAccount.get().setBalance(destAccount.get().getBalance() + amount);
             srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
@@ -90,3 +89,4 @@ public class BankService {
         return rsl;
     }
 }
+
