@@ -19,8 +19,8 @@ public class Analyze {
      * @return - result или 0.
      */
     public static double averageScore(Stream<Pupil> stream) {
-        return stream.map(Pupil::getSubjects)
-                .flatMap(List<Subject>::stream)
+        return stream
+                .flatMap(p -> p.getSubjects().stream())
                 .collect(Collectors.averagingDouble(Subject::getScore));
     }
 
@@ -30,7 +30,8 @@ public class Analyze {
      * @return - список из объекта Tuple (имя ученика и средний балл).
      */
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {
-        return stream.map(p -> new Tuple(p.getName(), p.getSubjects()
+        return stream
+                .map(p -> new Tuple(p.getName(), p.getSubjects()
                 .stream()
                 .collect(Collectors.averagingDouble(Subject::getScore))))
                 .collect(Collectors.toList());
@@ -42,8 +43,8 @@ public class Analyze {
      * @return - список из объекта Tuple (название предмета и средний балл).
      */
     public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
-        return stream.map(Pupil::getSubjects)
-                .flatMap(List<Subject>::stream)
+        return stream
+                .flatMap(p -> p.getSubjects().stream())
                 .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
                 .entrySet().stream().map(s -> new Tuple (s.getKey(), s.getValue()))
                 .collect(Collectors.toList());
@@ -55,7 +56,8 @@ public class Analyze {
      * @return - объект Tuple (имя ученика, сумма баллов  ученика).
      */
     public static Tuple bestStudent(Stream<Pupil> stream) {
-        return stream.map(p -> new Tuple(p.getName(), p.getSubjects()
+        return stream
+                .map(p -> new Tuple(p.getName(), p.getSubjects()
                 .stream()
                 .mapToInt(Subject::getScore)
                 .sum())).
@@ -69,8 +71,8 @@ public class Analyze {
      * @return - объект Tuple (имя предмета, сумма баллов каждого ученика по этому предмету).
      */
     public static Tuple bestSubject(Stream<Pupil> stream) {
-        return stream.map(Pupil::getSubjects)
-                .flatMap(List<Subject>::stream)
+        return stream
+                .flatMap(p -> p.getSubjects().stream())
                 .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.summingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
